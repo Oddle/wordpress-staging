@@ -23,6 +23,16 @@ function custom_scripts() {
 add_action( 'wp_enqueue_scripts', 'custom_scripts' );
 // end of adding scripts
 
+// loading above the flow css
+function criticalCSS_wp_head() {
+	echo '<style>';
+	include get_stylesheet_directory() . '/inc/critical.css.php';
+	echo '</style>';
+}
+
+add_action( 'wp_head', 'criticalCSS_wp_head' );
+// end of above the flow css
+
 // adding styles
 // function custom_css() {
 // 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.6' );
