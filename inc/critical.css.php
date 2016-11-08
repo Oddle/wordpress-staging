@@ -12,6 +12,11 @@ h4 {
   color: #333;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
 @media (min-width: 1200px) {
   .container {
     width: 970px;
