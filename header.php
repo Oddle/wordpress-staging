@@ -8,7 +8,47 @@
     <meta name="description" content="<?php echo get_bloginfo( 'description' ); ?>">
     <meta name="author" content="">
 
-    <title><?php echo get_bloginfo( 'name' ); ?></title>
+            <title>
+
+                  <?php // WordPress custom title script
+
+                  // is the current page a tag archive page?
+                  if (function_exists('is_tag') && is_tag()) {
+
+                  	// if so, display this custom title
+                  	echo 'Tag Archive for &quot;'.$tag.'&quot; - ';
+
+                  // or, is the page an archive page?
+                  } elseif (is_archive()) {
+
+                  	// if so, display this custom title
+                  	wp_title(''); echo ' Archive - ';
+
+                  // or, is the page a search page?
+                  } elseif (is_search()) {
+
+                  	// if so, display this custom title
+                  	echo 'Search for &quot;'.wp_specialchars($s).'&quot; - ';
+
+                  // or, is the page a single post or a literal page?
+                  } elseif (!(is_404()) && (is_single()) || (is_page())) {
+
+                  	// if so, display this custom title
+                  	wp_title(''); echo ' - ';
+
+                  // or, is the page an error page?
+                  } elseif (is_404()) {
+
+                  	// yep, you guessed it
+                  	echo 'Not Found - ';
+
+                  }
+                  // finally, display the blog name for all page types
+                  bloginfo('name');
+
+                  ?>
+
+          </title>
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -27,7 +67,7 @@
   </head>
 
   <body>
-    
+
 
     <div class="blog-masthead">
       <div class="container">

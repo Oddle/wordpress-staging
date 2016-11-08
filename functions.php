@@ -24,13 +24,13 @@ add_action( 'wp_enqueue_scripts', 'custom_scripts' );
 // end of adding scripts
 
 // loading above the flow css
-function criticalCSS_wp_head() {
-	echo '<style>';
-	include get_stylesheet_directory() . '/inc/critical.css.php';
-	echo '</style>';
-}
-
-add_action( 'wp_head', 'criticalCSS_wp_head' );
+// function criticalCSS_wp_head() {
+// 	echo '<style>';
+// 	include get_stylesheet_directory() . '/inc/critical.css.php';
+// 	echo '</style>';
+// }
+//
+// add_action( 'wp_head', 'criticalCSS_wp_head' );
 // end of above the flow css
 
 // adding styles
@@ -52,3 +52,35 @@ if (!(is_admin() )) {
     }
     add_filter( 'clean_url', 'defer_parsing_of_js', 11, 1 );
 }
+
+
+
+
+
+
+
+/**
+* Adding meta-tag
+**/
+function set_keywords(){
+global $post;
+$keywords = get_post_meta($post->ID, 'keywords', true);
+$default_keywords = "wordpress tutorial, custom theme";
+$metatag= "";
+
+if (empty($keywords)){
+$keywords = $default_keywords;
+}
+if (is_home() || is_front_page()){
+$keywords = $default_keywords;
+}
+
+$metatag="\t";
+$metatag.= "<meta name=\"keywords\" content=\"";
+$metatag.= $keywords;
+$metatag.= "\" />";
+$metatag.= "\n\n";
+
+echo $metatag;
+}
+add_action('wp_head', 'set_keywords');
