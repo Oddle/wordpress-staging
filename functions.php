@@ -21,6 +21,13 @@ function custom_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'custom_scripts' );
+
+function inline_css() {
+    echo "<style>img {width: 100%; height: auto;}</style>";
+}
+
+add_action( 'wp_head', 'inline_css' );
+
 // end of adding scripts
 
 // loading above the flow css
