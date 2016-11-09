@@ -47,6 +47,11 @@ img {
           box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
 
+.blog-nav {
+  padding-top:0;
+  padding-bottom: 0;
+}
+
 /* Nav links */
 .blog-nav-item {
   position: relative;
@@ -62,10 +67,10 @@ img {
 }
 
 /* Active state gets a caret at the bottom */
-.blog-nav .active {
+.blog-nav .active, .current-menu-item a {
   color: #fff;
 }
-.blog-nav .active:after {
+.blog-nav .active:after, .current-menu-item a:after {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -107,6 +112,10 @@ img {
 .blog-main {
   font-size: 18px;
   line-height: 1.5;
+}
+
+.menu {
+  margin-bottom:0;
 }
 
 /* Sidebar modules for boxing content */
